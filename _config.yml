@@ -1,7 +1,9 @@
 # Site settings
-title: Thomas Zühlke
-description: 'Business Card Page'
-url: 'https://www.zuehlke.cloud'
+title: RichPo
+subtitle: 'RichPo的个人博客'
+description: 'RichPo的个人博客'
+url: 'https://anranwu.github.io/'
+repository: 'AnranWu.github.io'
 baseurl: ''
 profilepic: '/images/tzuehlke.jpg'
 bkimage: '/images/bk1.jpg'
