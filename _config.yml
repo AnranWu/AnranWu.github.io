@@ -1,39 +1,46 @@
-# Site settings
+# Site/SEO settings
+email: 
+permalink: /:year/:month/:day/:title/
+google_analytics: 
+
 title: RichPo
 subtitle: 'RichPo的个人博客'
 description: 'RichPo的个人博客'
 url: 'https://anranwu.github.io/'
 repository: 'AnranWu.github.io'
-baseurl: ''
-profilepic: '/images/tzuehlke.jpg'
-bkimage: '/images/bk1.jpg'
-google_analytics: UA-XXXXXX-X
-font_awesome: 'XXXXXXXXXX.js'
+baseurl: ""
+twitter_username: 
+default_img: 
 
-author:
-  name: 'Thomas Zühlke'
-  email: thomas@zuehlke.cloud
-  mastodon: tzuehlke@mstdn.social
-  twitter_username: thomzuehlke
-#  facebook_username: joshgerdes
-  github_username:  tzuehlke
-  linkedin_username:  thomas-zühlke-889182165
-  meetup_name: Azure-Meetup-Rostock-MV
+# Profile settings
+name: 
+profile_img: 
+profile: 
+social:
+  github: 
 
 # Build settings
-destination: _site
 markdown: kramdown
-highlighter: rouge
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - octopress-autoprefixer
+compress_html:
+  clippings: all
+  comments: all
+  startings: [html, head, body]
+exclude:
+  - _screenshots
+  - .DS_Store
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE.txt
+  - README.md
 
+# Pagination
+paginate: 5
+paginate_path: "/blog/page-:num"
+
+# Sass
 sass:
-    sass_dir: _sass
-    style: compressed
-
-kramdown:
-  # use Github Flavored Markdown
-  input: GFM
-  # do not replace newlines by <br>s
-  hard_wrap: false
-
-#plugins: ['jekyll-paginate']
-exclude: ['README.md', 'screenshot-overview.png']
+  style: compressed

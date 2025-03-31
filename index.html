@@ -1,46 +1,65 @@
 ---
 layout: default
-robots: noindex
 ---
+<section class="previews">
+  <div>
 
-<!--<div class="main-post-list">-->
-
-  <ul class="timeline">
-    
-    {% for project in site.data.projects %}
-
-      <li class="timeline-inverted">
-        <div class="timeline-image">
-          <img class="img-me" src="{{ project.img | prepend: site.baseurl }}" alt="">
-        </div>
-        <div class="timeline-panel">
-          <div class="timeline-heading">
-            <h4><a href="https://github.com/{{ project.gh_user }}/{{ project.repo }}" target="_blank">{{ project.name }}</a></h4>
-          </div>
-          <div class="timeline-body">
-            {% if project.desc %}
-              {{ project.desc | markdownify }}
-            {% else %}
-            <div repotext="{{ project.repo }}">
-              <span class="desc"></div>
-            </div>
-            {% endif %}
-            <div user="{{ project.gh_user }}" repo="{{ project.repo }}" class="ghbtn" style="margin-top: 10px;">
-              <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/stargazers"><i class="fa fa-star"></i><span class="star"> ...</span></a>&emsp;&emsp;
-              <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/network"><i class="fa fa-code-fork"></i><span class="fork"> ...</span></a>&emsp;&emsp;
-              <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/watchers"><i class="far fa-eye"></i><span class="watchers"> ...</span></a>
-              <div style="height: 10px;"></div>
-          </div>
-        </div>
-      </li>
+    {% for post in paginator.posts %}
+      <figure class="absolute-bg preview__img" style="background-image: url('{{ post.image }}');"></figure>
     {% endfor %}
-    <!--
-    <li class="timeline-inverted">
-      <div class="timeline-image">
-        <img class="user-image" src="{{site.baseurl}}{{ site.timeline-img }}" alt="">
-      </div>
-    </li> -->
-  </ul>
+    
+    <div class="previews__container">
+      <span>Welcome to</span>
+      <h1>{{ site.title }}</h1>
+    </div>
+  </div>
 
-<!--</div>-->
+  <div>
+    <header>
+      <ul class="tabs">
+        <li class="tabs__item">Posts</li>
+        <li class="tabs__item">Categories</li>
+      </ul>
+    </header>
 
+    <div class="tab">
+      <ul itemscope itemtype="http://schema.org/Blog">
+
+        {% for post in paginator.posts %}
+
+          <li class="preview" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+            <article>
+              <a class="preview__link" href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
+                <span class="preview__date" itemprop="datePublished" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</span>
+                <h2 class="preview__header" itemprop="name">{{ post.title }}</h2>
+                <p class="preview__excerpt" itemprop="description">{{ post.content | strip_html | truncatewords: 30 }}</p>
+                <span class="preview__more">Read More</span>
+              </a>
+            </article>
+          </li>
+
+        {% endfor %}
+
+      </ul>
+
+      {% if paginator.total_pages > 1 %}
+        <div class="pagination">
+          {% if paginator.previous_page %}
+            <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Previous</a>
+          {% endif %}
+
+          {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path | prepend: site.baseurl }}">Next</a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% include archive-link.html %}
+
+    </div>
+
+    {% include categories-tab.html %}
+
+  </div>
+
+</section>
