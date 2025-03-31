@@ -29,6 +29,9 @@ subtitle: 'RichPo的个人博客'
 url: 'https://anranwu.github.io/'
 repository: 'AnranWu.github.io'
 
+# theme: owner/name --> Don't forget to remove/comment the gem-based theme option
+remote_theme: "jeffreytse/jekyll-theme-yat"
+
 # title: Your awesome title
 email: anranwu0808@163.com
 author: RichPo
